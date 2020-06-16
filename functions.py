@@ -19,3 +19,18 @@ def sort_items(items):
             dict_temp=items[-i-1]
             items[-i-1]=items[-i]
             items[-i]=dict_temp
+
+def sell_items(items, product, sell_quantity):
+    for i in range(len(items)):
+        if product==items[i]['name']:
+            if sell_quantity<items[i]['quantity']:
+                items[i]['quantity']-=sell_quantity
+                print(f"Sprzedano {sell_quantity} {items[i]['unit']} {product}")
+                get_items(items)
+                break
+            else:
+                print("Nie ma wystarczającej ilości produktu w magazynie")
+                break
+                
+    else:
+        print("Nie znaleziono podanego produktu w bazie")
